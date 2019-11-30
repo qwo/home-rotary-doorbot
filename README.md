@@ -21,6 +21,7 @@ daemonize the process `answer.py` for long term usage.
 
 You can modify the * section to fit your own code or provide a second factor auth. Cannot get input from the client.
 
+Add daemon to cron for a rapsberry pi via `./setup_cron.sh`
 
 Shoutouts
 - http://pcmicro.com/support/modem_at_commands.html
