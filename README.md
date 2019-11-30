@@ -9,6 +9,7 @@ Make your own personal intercom ring using a raspberry pi and python!
 ```
 pip install -r requirements.xt
 python answer.py
+*/5 * * * * pgrep -f answer.py || nohup python /home/pi/Code/answer.py > test.out
 ```
 
 ## Usage 
