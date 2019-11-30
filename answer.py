@@ -1,38 +1,42 @@
 import serial
 import time
+import pass_dtmf_tones as df 
+
+
 
 ser = serial.Serial('/dev/ttyACM0', 115200, timeout=5)
 ser.write("AT\r")
 response =  ser.read(2)
+notDone = True
 
 def tick(s=.01):
     time.sleep(s)
 
-while True:
+def do_command(cmd):
+    ser.write(cmd)
 
+    response = ser.readline()
+    print (response)
+    tick()
+    return response 
+
+
+while notDone:
+    # do_command("ATA\r");
     response =  ser.readline()
     print (response)
     tick()
-    if "RING" in response:
-        ser.write("ATA\r")
-        tick()
-        ser.write("ATM\r")
-        response =  ser.readline()
+    if "R" in response:
+        do_command("AT;\r") # Hello
+        # do_command("ATM\r") # Audio
         while True:
-            tick()
-            response =  ser.readline()
-            print(response)
-            ser.write("ATD *6\r")
-            tick()
-            response =  ser.readline()
-            print(response)
-            tick()
-            ser.write("ATH \r") # Goodbye
-
-
-
-            # ser.write("ATDnnn\r") # Hello
-            # ser.write("AT+VTD=*;+VTD=1;+VTD=2;+VTD=3;+VTD=4;+VTD=#\r")
-            
-
+            # do_command(input())
+            df.init_modem_settings()
+            df.dial_n_pass_dtmf("","6")
+            df.atexit.register(df.close_modem_port)
+            break;
+        # notDone = False
+        print('exiting')
+        ser.write('ATH;\r')
+    
         
