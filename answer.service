@@ -1,0 +1,9 @@
+[Unit]
+Description=Door Answer
+After=multi-user.target
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/python /home/pi/Code/answer.py
+StandardInput=tty-force
+
