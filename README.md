@@ -23,6 +23,10 @@ You can modify the * section to fit your own code or provide a second factor aut
 
 Add daemon to cron for a rapsberry pi via `./setup_cron.sh`
 
+## vnc server
+
+use a tool such as fling to identify your raspberry pi's ip and SSH into it at `pi@<IP>`
+
 Shoutouts
 - http://pcmicro.com/support/modem_at_commands.html
 - https://stackoverflow.com/questions/23532038/read-response-at-command-with-pyserial
