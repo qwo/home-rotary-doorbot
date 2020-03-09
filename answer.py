@@ -30,7 +30,7 @@ while notDone:
     print (response)
     tick()
     if "R" in response:
-        if r.post(FLAG_URL).status_code == 200:
+        if r.post(FLAG_URL, {}).status_code == 200:
             do_command("AT;\r") # Hello
             # do_command("ATM\r") # Audio
             while True:
